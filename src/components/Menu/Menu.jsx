@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { Dish } from "../Dish/Dish";
-
-import styles from "./styles.module.css";
+import { Dish, DishWithMemo } from "../Dish/Dish"; import styles from "./styles.module.css";
 import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRestaurantDishIdsById } from "../../store/restaurant/selectors";
 import { selectIsDishLoading } from "../../store/dish/selectors";
 import { fetchDishes } from "../../store/dish";
+import { withAuthorization } from "../../hoc/withAuthorization";
 
 export const Menu = ({ restaurantId, className }) => {
   const dispatch = useDispatch();
@@ -43,3 +42,17 @@ export const Menu = ({ restaurantId, className }) => {
     </div>
   );
 };
+
+
+
+const MenuForUnauthorizedUsers = ({ className }) => {
+  return (
+    <div className={classnames(styles.root, className)}>
+      <h2 className={styles.title}>Menu</h2>
+    </div>
+  );
+};
+
+export const MenuWithAutorization = withAuthorization({
+  AuthorizedComponent: Menu, UnautorizedComponent: MenuForUnauthorizedUsers
+});

@@ -9,6 +9,8 @@ import { HomePage } from "./pages/HomePage/HomePage";
 import { CartPage } from "./pages/CartPage/CartPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 import { Restaurant } from "./components/Restaurant/Restaurant";
+import { Menu, MenuWithAutorization } from "./components/Menu/Menu";
+import { Reviews } from "./components/Reviews/Reviews";
 
 export const App = () => {
   return (
@@ -19,7 +21,11 @@ export const App = () => {
             <Routes>
               <Route index element={<HomePage />} />
               <Route path="/restaurants" element={<RestaurantPage />}>
-                <Route path=":restaurantId" element={<Restaurant />} />
+                <Route path=":restaurantId" element={<Restaurant />}>
+                  <Route index element={<Navigate to="menu" replace />} />
+                  <Route path="menu" element={<MenuWithAutorization />} />
+                  <Route path="reviews" element={<Reviews />} />
+                </Route>
               </Route>
               <Route path="/cart" element={<CartPage />} />
               <Route path="/redirect" element={<Navigate to="/" replace />} />

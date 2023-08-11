@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Restaurant } from "../../components/Restaurant/Restaurant";
+import React, { useEffect } from "react";
 import { Tabs } from "../../components/Tabs/Tabs";
 
 import styles from "./styles.module.css";

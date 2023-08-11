@@ -3,6 +3,12 @@
     flex-direction: column;
 }
 
-.menu, .review, .reviewForm {
+.menu,
+.review,
+.reviewForm {
+    margin-top: 30px;
+}
+
+.mainContent {
     margin-top: 30px;
 }
