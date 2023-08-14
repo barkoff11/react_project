@@ -6,8 +6,12 @@ import { selectRestaurantDishIdsById } from "../../store/restaurant/selectors";
 import { selectIsDishLoading } from "../../store/dish/selectors";
 import { fetchDishes } from "../../store/dish";
 import { withAuthorization } from "../../hoc/withAuthorization";
+import { useParams } from 'react-router-dom';
 
-export const Menu = ({ restaurantId, className }) => {
+export const Menu = ({ className }) => {
+  console.log("menu")
+  const { restaurantId } = useParams();
+
   const dispatch = useDispatch();
   const menu = useSelector((state) =>
     selectRestaurantDishIdsById(state, { restaurantId })

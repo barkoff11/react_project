@@ -7,8 +7,11 @@ import { selectRestaurantReviewIdsById } from "../../store/restaurant/selectors"
 import { selectIsReviewLoading } from "../../store/review/selectors";
 import { fetchReviews } from "../../store/review";
 import { fetchUsers } from "../../store/user";
+import { useParams } from "react-router-dom";
 
-export const Reviews = ({ restaurantId, className }) => {
+export const Reviews = ({ className }) => {
+  const { restaurantId } = useParams();
+
   const dispatch = useDispatch();
   const reviews = useSelector((state) =>
     selectRestaurantReviewIdsById(state, { restaurantId })
