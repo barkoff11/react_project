@@ -23,7 +23,7 @@ export const App = () => {
               <Route path="/restaurants" element={<RestaurantPage />}>
                 <Route path=":restaurantId" element={<Restaurant />}>
                   <Route index element={<Navigate to="menu" replace />} />
-                  <Route path="menu" element={<MenuWithAutorization />} />
+                  <Route path="menu" element={<Menu />} />
                   <Route path="reviews" element={<Reviews />} />
                 </Route>
               </Route>
